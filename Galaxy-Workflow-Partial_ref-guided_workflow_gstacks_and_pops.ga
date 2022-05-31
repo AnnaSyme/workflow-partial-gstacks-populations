@@ -1,0 +1,330 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "Version 1",
+    "format-version": "0.1",
+    "name": "Partial ref-guided workflow - gstacks and pops",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Bam files"
+                }
+            ],
+            "label": "Bam files",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "bottom": 298.015625,
+                "height": 61.78125,
+                "left": 432,
+                "right": 632,
+                "top": 236.234375,
+                "width": 200,
+                "x": 432,
+                "y": 236.234375
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"collection_type\": \"list\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "fcf8090d-a994-489e-acd4-131d748c5e3b",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Population map"
+                }
+            ],
+            "label": "Population map",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "bottom": 613.3125,
+                "height": 82.171875,
+                "left": 427.9375,
+                "right": 627.9375,
+                "top": 531.140625,
+                "width": 200,
+                "x": 427.9375,
+                "y": 531.140625
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "2ed27c77-5a27-4535-b24a-90d3813c0996",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/stacks2_gstacks/stacks2_gstacks/2.55+galaxy2",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "input_bam": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "popmap": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Stacks2: gstacks",
+                    "name": "input_bam"
+                },
+                {
+                    "description": "runtime parameter for tool Stacks2: gstacks",
+                    "name": "popmap"
+                }
+            ],
+            "label": null,
+            "name": "Stacks2: gstacks",
+            "outputs": [
+                {
+                    "name": "gstacks_out",
+                    "type": "input"
+                },
+                {
+                    "name": "output_log",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "bottom": 515.578125,
+                "height": 276.296875,
+                "left": 738.40625,
+                "right": 938.40625,
+                "top": 239.28125,
+                "width": 200,
+                "x": 738.40625,
+                "y": 239.28125
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/stacks2_gstacks/stacks2_gstacks/2.55+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "f6e91108b7b1",
+                "name": "stacks2_gstacks",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"add_log\": \"true\", \"add_log_distribs\": \"false\", \"input_bam\": {\"__class__\": \"RuntimeValue\"}, \"mode_cond\": {\"mode_select\": \"refbased\", \"__current_case__\": 1, \"paired_cond\": {\"paired_select\": \"\", \"__current_case__\": 0, \"rm_unpaired_reads\": \"false\", \"rm_pcr_duplicates\": \"false\"}, \"advanced_cond\": {\"advanced_select\": \"yes\", \"__current_case__\": 0, \"min_mapq\": \"10\", \"max_clipped\": \"0.2\", \"max_insert_len\": \"1000\", \"details\": \"false\", \"phasing_cooccurrences_thr_min\": \"1\", \"phasing_cooccurrences_thr_max\": \"2\", \"phasing_dont_prune_hets\": \"false\"}}, \"model_cond\": {\"model\": \"marukilow\", \"__current_case__\": 0, \"var_alpha\": \"0.01\", \"gt_alpha\": \"0.05\"}, \"popmap\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "2.55+galaxy2",
+            "type": "tool",
+            "uuid": "9cd4eb38-d722-4a20-868c-c5a70874c8de",
+            "workflow_outputs": [
+                {
+                    "label": "Stacks2: gstacks  on input dataset(s) Assembled contigs and variant sites",
+                    "output_name": "gstacks_out",
+                    "uuid": "e83d469d-f2e5-4980-92e3-162408ec8a58"
+                },
+                {
+                    "label": "Stacks2: gstacks on input dataset(s) log file",
+                    "output_name": "output_log",
+                    "uuid": "0fb7dd48-ae9c-40a2-afa3-72a3328e83e8"
+                }
+            ]
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/stacks2_populations/stacks2_populations/2.55+galaxy2",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "options_usage|input_aln": {
+                    "id": 2,
+                    "output_name": "gstacks_out"
+                },
+                "popmap": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Stacks2: populations",
+                    "name": "kernel_smoothing"
+                },
+                {
+                    "description": "runtime parameter for tool Stacks2: populations",
+                    "name": "options_filtering"
+                },
+                {
+                    "description": "runtime parameter for tool Stacks2: populations",
+                    "name": "options_filtering"
+                },
+                {
+                    "description": "runtime parameter for tool Stacks2: populations",
+                    "name": "options_usage"
+                },
+                {
+                    "description": "runtime parameter for tool Stacks2: populations",
+                    "name": "popmap"
+                }
+            ],
+            "label": null,
+            "name": "Stacks2: populations",
+            "outputs": [
+                {
+                    "name": "output_log",
+                    "type": "txt"
+                },
+                {
+                    "name": "out_haplotypes",
+                    "type": "tabular"
+                },
+                {
+                    "name": "out_hapstats",
+                    "type": "tabular"
+                },
+                {
+                    "name": "out_populations_log_distribs",
+                    "type": "txt"
+                },
+                {
+                    "name": "out_sumstats_sum",
+                    "type": "tabular"
+                },
+                {
+                    "name": "out_sumstats",
+                    "type": "tabular"
+                },
+                {
+                    "name": "out_phistats",
+                    "type": "tabular"
+                },
+                {
+                    "name": "out_phistats_sum",
+                    "type": "tabular"
+                },
+                {
+                    "name": "out_fststats_sum",
+                    "type": "tabular"
+                },
+                {
+                    "name": "out_fasta_strict",
+                    "type": "tabular"
+                },
+                {
+                    "name": "out_vcf_haplotypes_snps",
+                    "type": "vcf"
+                },
+                {
+                    "name": "out_vcf_haplotypes_haps",
+                    "type": "vcf"
+                },
+                {
+                    "name": "out_structure",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "bottom": 1866.71875,
+                "height": 1456.21875,
+                "left": 1073.21875,
+                "right": 1273.21875,
+                "top": 410.5,
+                "width": 200,
+                "x": 1073.21875,
+                "y": 410.5
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/stacks2_populations/stacks2_populations/2.55+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "e2db212d64ad",
+                "name": "stacks2_populations",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"add_log\": \"true\", \"advanced_options\": {\"log_fst_comp\": \"false\"}, \"batch_size\": null, \"fstats_conditional\": {\"fstats\": \"yes\", \"__current_case__\": 1, \"fst_correction\": \"false\", \"p_value_cutoff\": \"0.05\"}, \"genetic_map_options\": {\"map_type\": null, \"map_format\": null}, \"kernel_smoothing\": {\"options_kernel\": {\"kernel\": \"\", \"__current_case__\": 0}, \"bootstrap_resampling_mode\": {\"bootstrap\": \"\", \"__current_case__\": 1, \"bootstrap_pifis\": \"false\", \"bootstrap_fst\": \"false\", \"bootstrap_div\": \"false\", \"bootstrap_phist\": \"false\"}, \"bootstrap_reps\": \"100\", \"bootstrap_wl\": {\"__class__\": \"RuntimeValue\"}}, \"locus_stats\": {\"hwe\": \"false\"}, \"merge_phase\": {\"enzyme\": \"\", \"merge_sites\": \"false\", \"merge_prune_lim\": \"1.0\"}, \"options_filtering\": {\"minperc\": \"0.0\", \"minpop\": \"1\", \"min_samples_overall\": \"0.0\", \"filter_haplotype_wise\": \"false\", \"min_maf\": \"0.0\", \"min_mac\": \"0\", \"max_obs_het\": null, \"filter_single_snp\": \"\", \"whitelist\": {\"__class__\": \"RuntimeValue\"}, \"blacklist\": {\"__class__\": \"RuntimeValue\"}}, \"options_usage\": {\"input_type\": \"stacks\", \"__current_case__\": 0, \"input_aln\": {\"__class__\": \"RuntimeValue\"}}, \"popmap\": {\"__class__\": \"RuntimeValue\"}, \"populations_output\": {\"ordered_export\": \"false\", \"fasta_loci\": \"true\", \"fasta_samples\": \"false\", \"vcf\": \"true\", \"genepop\": \"false\", \"structure\": \"true\", \"radpainter\": \"false\", \"plink\": \"false\", \"hzar\": \"false\", \"phylip\": \"false\", \"phylip_var\": \"false\", \"treemix\": \"false\", \"no_hap_exports\": \"false\", \"fasta_samples_raw\": \"false\", \"gtf\": \"false\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "2.55+galaxy2",
+            "type": "tool",
+            "uuid": "89e76d01-ec0c-48d0-9be2-23b0ddb3ffe4",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "out_vcf_haplotypes_haps",
+                    "uuid": "3a08ec84-a7b0-4678-91bd-2071cd61ef69"
+                },
+                {
+                    "label": "Stacks2: populations  on input dataset(s) Summary of Population-level summary statistics",
+                    "output_name": "out_sumstats_sum",
+                    "uuid": "58e22f5e-b27a-4010-aa6f-7ca5a61159e0"
+                },
+                {
+                    "label": null,
+                    "output_name": "out_phistats_sum",
+                    "uuid": "077e9597-223f-48f1-9525-bc2829b0961d"
+                },
+                {
+                    "label": null,
+                    "output_name": "out_vcf_haplotypes_snps",
+                    "uuid": "d8f5f4e1-f9d5-475d-96e4-3e55aa6dddb7"
+                },
+                {
+                    "label": "Stacks2: populations on input dataset(s) log file",
+                    "output_name": "output_log",
+                    "uuid": "b531b019-35f9-486d-8a44-937b7c20ea28"
+                },
+                {
+                    "label": "Stacks2: populations  on input dataset(s) Population-level haplotype summary statistics",
+                    "output_name": "out_hapstats",
+                    "uuid": "2cc0bc80-c810-4e15-8675-1e57ac41ed91"
+                },
+                {
+                    "label": "Stacks2: populations  on input dataset(s) Populations log distributions",
+                    "output_name": "out_populations_log_distribs",
+                    "uuid": "c417b5ff-a711-40fc-9e04-0e8d410800bf"
+                },
+                {
+                    "label": null,
+                    "output_name": "out_fststats_sum",
+                    "uuid": "f532c61f-fecc-4d28-8a12-807a30b7781a"
+                },
+                {
+                    "label": "Stacks2: populations  on input dataset(s) Population-level summary statistics",
+                    "output_name": "out_sumstats",
+                    "uuid": "cc6115e1-9801-4d78-859e-1be8d0167bef"
+                },
+                {
+                    "label": null,
+                    "output_name": "out_structure",
+                    "uuid": "6ea11293-779f-43b6-b2f5-90625c591054"
+                },
+                {
+                    "label": null,
+                    "output_name": "out_phistats",
+                    "uuid": "e498e016-f21f-4fdb-a7e6-a5e7da974155"
+                },
+                {
+                    "label": "Stacks2: populations  on input dataset(s) Raw Genotypes/Haplotypes",
+                    "output_name": "out_haplotypes",
+                    "uuid": "4ec9107d-f6fa-4ec1-9814-bb778c39f8ff"
+                },
+                {
+                    "label": null,
+                    "output_name": "out_fasta_strict",
+                    "uuid": "8adaac87-625b-4f9d-a60f-823976d8981f"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "aa27f978-e0c7-4460-ac16-8d1dd371a7d6",
+    "version": 2
+}
